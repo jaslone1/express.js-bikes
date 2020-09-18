@@ -11,10 +11,24 @@
         <% for (let ride of rides) { %>
         <li>
           <a href="/rides/<%=ride._id%>">
+            type:
+            <% if(ride.type === true) {%>
+            Sprint
+            <% } else { %>
+            Hillclimb
+          <% } %>
+          <%= ride.date %>
           <%= ride.distance %>
+          <%= ride.topSpeed %>
+
         </li>
       <%}%>
       </ul>
+      <button type="button" name="button">
+        <a href="/rides/new">Add New Ride</a>
+      </button>
+
+
     </div>
 
   </body>

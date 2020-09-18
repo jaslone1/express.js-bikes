@@ -7,9 +7,14 @@
     <body>
         <h1>New Rides page</h1>
         <form action="/rides" method="POST">
-            date: <input type="text" name="date" /><br/>
-            Distance: <input type="number" name="distance" /><br/>
-            Top Speed: <input type="number" name="topSpeed" /><br/>
+        <label for="type">
+        <input type="checkbox" id="type" name="type"/>
+        <span>Was this a Sprint?</span>
+        </label>
+          <br>
+            date: <input type="mongoose.Date" name="date" /><br>
+            Distance: <input type="mongoose.Types.Decimal128" name="distance" /><br>
+            Top Speed: <input type="mongoose.Types.Decimal128" name="topSpeed" /><br>
             <input type="submit" name="" value="Create Ride"/>
         </form>
     </body>

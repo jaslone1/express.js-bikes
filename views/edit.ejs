@@ -7,6 +7,8 @@
   <body>
     <h1>Rides Edits</h1>
     <form action="/rides/<%=ride.id%>?_method=PUT" method="POST">
+      <label for="type">Was this a sprint?:</label>
+      <input type="checkbox" name="type" value="<%ride.type%>">
       <label for="date">Date:</label>
       <input type="text" name="date" value="<%ride.date%>">
       <label for="distance">Distance:</label>

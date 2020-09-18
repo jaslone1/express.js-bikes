@@ -1,9 +1,10 @@
 const mongoose = require('mongoose')
 
 const rideSchema = new mongoose.Schema({
-  date: { type: String, required: true },
-  distance: { type: Number, required: true },
-  topSpeed: {type: Number, required: true},
+  type: { type: Boolean, required: true},
+  date: { type: mongoose.Date, required: true },
+  distance: { type: mongoose.Types.Decimal128, required: true },
+  topSpeed: {type: mongoose.Types.Decimal128, required: true},
 })
 
 const Ride = mongoose.model('Ride', rideSchema)

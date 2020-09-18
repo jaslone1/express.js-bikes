@@ -25,6 +25,13 @@ rides.get('/:id/edit', (req,res) => {
   })
 })
 
+//delete
+rides.delete('/:id', (req, res) => {
+  Ride.findByIdAndRemove(req.params.id, (error, deletedRide) => {
+    res.redirect('/rides')
+  })
+})
+
 //Show
 rides.get('/:id', (req, res) => {
   Ride.findById(req.params.id, (error, foundRide) => {
@@ -36,6 +43,11 @@ rides.get('/:id', (req, res) => {
 
 //update
 rides.put('/:id', (req, res) => {
+  if (req.body.type === 'on') {
+    req.body.type = true
+  } else {
+    req.body.type = false
+  }
   Ride.findByIdAndUpdate(
     req.params.id,
     req.body,
@@ -48,6 +60,11 @@ rides.put('/:id', (req, res) => {
 
 //create
 rides.post('/', (req, res) => {
+  if (req.body.type === 'on') {
+    req.body.type = true
+  } else {
+    req.body.type = false
+  }
   Ride.create(req.body, (error, createdRide) => {
     res.redirect('/')
   })
