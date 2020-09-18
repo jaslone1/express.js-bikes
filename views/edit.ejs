@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Rides Edits</h1>
+    <form action="/rides/<%=ride.id%>?_method=PUT" method="POST">
+      <label for="date">Date:</label>
+      <input type="text" name="date" value="<%ride.date%>">
+      <label for="distance">Distance:</label>
+      <input type="number" name="distance" value="<%=ride.distance%>">
+      <label for="topSpeed">Top Speed:</label>
+      <input type="number" name="topSpeed" value="<%ride.topSpeed%>">
+    <input type="submit" value="Submit">
+    </form>
+    <button type="button" name="button">
+      <a href="/rides">Back</a>
+    </button>
+  </body>
+</html>

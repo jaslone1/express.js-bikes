@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+  </head>
+  <body>
+
+    <div class="container">
+
+      <h1>Rides Index Page</h1>
+      <ul>
+        <% for (let ride of rides) { %>
+        <li>
+          <a href="/rides/<%=ride._id%>">
+          <%= ride.distance %>
+        </li>
+      <%}%>
+      </ul>
+    </div>
+
+  </body>
+</html>
