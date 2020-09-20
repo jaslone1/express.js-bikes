@@ -1,18 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
-        <title></title>
+      <%- include ('../partials/head.ejs') %>
     </head>
     <body>
         <h1>New Rides page</h1>
         <form action="/rides" method="POST">
-        <label for="type">
-        <input type="checkbox" id="type" name="type"/>
-        <span>Was this a Sprint?</span>
-        </label>
-          <br>
-            date: <input type="mongoose.Date" name="date" /><br>
+            Letter: <input type="text" name="letter" /><br>
             Distance: <input type="mongoose.Types.Decimal128" name="distance" /><br>
             Top Speed: <input type="mongoose.Types.Decimal128" name="topSpeed" /><br>
             <input type="submit" name="" value="Create Ride"/>

@@ -1,17 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
-    <title></title>
+  <%- include ('../partials/head.ejs') %>
   </head>
   <body>
     <h1>Ride Show</h1>
-    <% if(ride.type === true) { %>
-    Sprint
-  <%} else { %>
-  Hillclimb
-<% } %> 
-    Date: <%=ride.date%><br>
+    Letter: <%=ride.letter%><br>
     Distance: <%=ride.distance%><br>
     Top Speed: <%=ride.topSpeed%><br>
     </html><button type="button" name="button"><a href="/rides/<%=ride._id%>/edit">Edit</a></button>

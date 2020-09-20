@@ -1,25 +1,21 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+    <%- include ('../partials/head.ejs') %>
   </head>
-  <body>
+  <body class="text-center">
 
-    <div class="container">
+    <div class=>
 
       <h1>Rides Index Page</h1>
       <ul>
-        <% for (let ride of rides) { %>
+        <% for (let ride of rides) {
+             %>
         <li>
-          <a href="/rides/<%=ride._id%>">
-            type:
-            <% if(ride.type === true) {%>
-            Sprint
-            <% } else { %>
-            Hillclimb
-          <% } %>
-          <%= ride.date %>
-          <%= ride.distance %>
-          <%= ride.topSpeed %>
+
+          <a href="/rides/<%=ride._id%>">see ride</a>
+          Distance: <%= ride.distance %><br>
+          Top Speed: <%= ride.topSpeed %>
 
         </li>
       <%}%>

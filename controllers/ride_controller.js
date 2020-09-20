@@ -2,17 +2,26 @@ const express = require('express')
 const rides = express.Router()
 const Ride = require('../models/rides.js')
 
-//index
-rides.get('/', (req, res) => {
-  Ride.find({}, (error, allRides)=> {
-    res.render('index.ejs', {
-      rides: allRides
+
+//Index
+rides.get('/:letter', (req, res) => {
+  Ride.find(req.params.letter, (error, foundRides)=> {
+    res.send({
+    // })
+    // res.render('index.ejs', {
+      rides: foundRides
     })
   })
 })
 
+//home
+rides.get('/home', (req, res) => {
+    res.render('home.ejs')
+})
+
 //new
 rides.get('/new', (req, res) =>{
+  console.log('heres new');
   res.render('new.ejs')
 })
 
@@ -32,6 +41,8 @@ rides.delete('/:id', (req, res) => {
   })
 })
 
+
+
 //Show
 rides.get('/:id', (req, res) => {
   Ride.findById(req.params.id, (error, foundRide) => {
@@ -43,11 +54,6 @@ rides.get('/:id', (req, res) => {
 
 //update
 rides.put('/:id', (req, res) => {
-  if (req.body.type === 'on') {
-    req.body.type = true
-  } else {
-    req.body.type = false
-  }
   Ride.findByIdAndUpdate(
     req.params.id,
     req.body,
@@ -60,11 +66,6 @@ rides.put('/:id', (req, res) => {
 
 //create
 rides.post('/', (req, res) => {
-  if (req.body.type === 'on') {
-    req.body.type = true
-  } else {
-    req.body.type = false
-  }
   Ride.create(req.body, (error, createdRide) => {
     res.redirect('/')
   })
