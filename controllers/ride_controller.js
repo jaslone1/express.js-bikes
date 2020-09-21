@@ -2,22 +2,20 @@ const express = require('express')
 const rides = express.Router()
 const Ride = require('../models/rides.js')
 
-
-//Index
-rides.get('/:letter', (req, res) => {
-  Ride.find(req.params.letter, (error, foundRides)=> {
-    res.send({
-    // })
-    // res.render('index.ejs', {
-      rides: foundRides
-    })
-  })
-})
-
 //home
 rides.get('/home', (req, res) => {
     res.render('home.ejs')
 })
+
+//Index
+rides.get('/', (req, res) => {
+  Ride.find({}, (error, allRides)=> {
+    res.render('index.ejs', {
+      rides: allRides
+    })
+  })
+})
+
 
 //new
 rides.get('/new', (req, res) =>{

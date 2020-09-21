@@ -8,21 +8,24 @@
     <div class=>
 
       <h1>Rides Index Page</h1>
-      <ul>
-        <% for (let ride of rides) {
-             %>
-        <li>
-
-          <a href="/rides/<%=ride._id%>">see ride</a>
-          Distance: <%= ride.distance %><br>
-          Top Speed: <%= ride.topSpeed %>
-
-        </li>
-      <%}%>
-      </ul>
       <button type="button" name="button">
         <a href="/rides/new">Add New Ride</a>
       </button>
+    <table class="table">
+      <% for (let ride of rides) { %>
+      <thead>
+        <tr>
+          <th>Distance</th>
+          <th>Top Speed</th>
+        </tr>
+      </thead>
+        <tr>
+          <td><%= ride.distance %></td>
+          <td><%= ride.topSpeed %></td>
+        </tr>
+      <%}%>
+      </table>
+
 
 
     </div>
