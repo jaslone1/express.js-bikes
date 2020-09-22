@@ -41,7 +41,7 @@ rides.get('/:id/edit', isAuthenticated, (req,res) => {
 //delete
 rides.delete('/:id', isAuthenticated, (req, res) => {
   Ride.findByIdAndRemove(req.params.id, (error, deletedRide) => {
-    res.redirect('/rides')
+    res.redirect('/rides/home')
   })
 })
 
@@ -68,7 +68,7 @@ rides.put('/:id', isAuthenticated, (req, res) => {
     req.body,
     { new: true },
     (error, updatesModel) => {
-      res.redirect('/rides')
+      res.redirect('/rides/home')
     }
   )
 })
@@ -76,7 +76,7 @@ rides.put('/:id', isAuthenticated, (req, res) => {
 //create
 rides.post('/', isAuthenticated, (req, res) => {
   Ride.create(req.body, (error, createdRide) => {
-    res.redirect('/rides')
+    res.redirect('/rides/home')
   })
 })
 

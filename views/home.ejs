@@ -3,36 +3,53 @@
   <head>
       <%- include ('./partials/head.ejs') %>
   </head>
-  <body>
+  <body class="text-center">
     <div class="container">
       <nav>
         <%- include ('./partials/nav.ejs') %>
       </nav>
 <br>
-<p>The current leaderboard is for the 1000ft drag on East 5th st.</p>
-<p>It start east of Springdale Rd and lasts until you pass Spencer Ln.</p>
+<h3>Feel the need for some socially distant cycling competition?</h3>
+<p>There will be a leaderboard for top sprints/hillclimbs around Austin</</br>Currently the only leaderboard is for the 1000ft drag on East 5th st.</br>
+It starts east of Springdale Rd and lasts until you pass Spencer Ln.</p>
 </div>
 <div>
 
   <h1>1000 ft. drag</h1>
-      <table class="table">
-  <% for (let ride of rides) { %>
+
+      <table class="table" id="table" data-toggle="table" data-sort-order="desc" data-sort-name="time">
+
   <thead>
     <tr>
-      <th></th>
-      <th>Time</th>
-      <th>Top Speed</th>
+      <th>Rider Name</th>
+      <th data-field="time" data-sortable="true">Time</th>
+      <th data-field="speed" data-sortable="true">Top Speed</th>
       <th></th>
     </tr>
   </thead>
+    <% for (let ride of rides) { %>
     <tr>
       <td><%= ride.username%> </td>
-      <td><%= ride.time %></td>
+      <td class="time"><%= ride.time %></td>
       <td><%= ride.topSpeed %></td>
       <td><a href="/rides/<%=ride._id%>"><button type="button" name="Show">Ride Data</button></a></td>
     </tr>
-  <%}%>
+<%}%>
   </table>
+
+  <%if (currentUser) {%>
+  <a href="/rides/new">
+  <button type="button" name="New Ride" >
+    Create New Ride
+  </button>
+  </a>
+  <%}else{%>
+  <h3>Log in to add a ride</h3>
+  <%}%>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/bootstrap-table@1.18.0/dist/bootstrap-table.min.js"></script>
   </body>
 </html>

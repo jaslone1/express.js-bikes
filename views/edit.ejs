@@ -3,21 +3,29 @@
   <head>
     <%- include ('./partials/head.ejs') %>
   </head>
-  <body class="text-center">
-    <h1>Rides Edits</h1>
+  <body>
+    <div class="container">
+    <h1>Edit this ride</h1>
+
     <form action="/rides/<%=ride.id%>?_method=PUT" method="POST">
 <br>
       <label for="time">Time:</label>
       <input type="mongoose.Types.Decimal128" name="time" value="<%=ride.time%>">
 <br>
+<br>
       <label for="topSpeed">Top Speed:</label>
       <input type="mongoose.Types.Decimal128" name="topSpeed" value="<%=ride.topSpeed%>">
 <br>
-    <input type="submit" value="Submit">
+<br>
+    <label for="img">Link to verification:</label>
+    <input type="text" name="imgVerify" value="<%=ride.imgVerify%>">
+<br>
+    <input type="submit" value="Submit" style="margin-top:20px">
     </form>
       <a href="/rides">
-    <button type="button" name="button">
+    <button type="button" name="button" style="margin-top:20px">
     Back
     </button></a>
+    </div>
   </body>
 </html>
