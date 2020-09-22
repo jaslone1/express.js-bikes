@@ -2,24 +2,28 @@
 <html lang="en" dir="ltr">
   <head>
       <%- include ('./partials/head.ejs') %>
+      <link rel="stylesheet" href="styles.css">
   </head>
-  <body class="text-center">
-    <div class="container">
-      <nav>
+  <body class="text-center" style="background-color:teal">
+    <div class="container" >
+      <nav class>
         <%- include ('./partials/nav.ejs') %>
       </nav>
 <br>
+
+
+
 <h3>Feel the need for some socially distant cycling competition?</h3>
 <p>There will be a leaderboard for top sprints/hillclimbs around Austin</br>Currently the only leaderboard is for the 1000ft drag on East 5th st.</br>
 It starts east of Springdale Rd and lasts until you pass Spencer Ln.</p><br>
 <p>Here's the Strava link for segment info:
-<a href="https://www.strava.com/segments/8181413">https://www.strava.com/segments/8181413</a> </p>
+<a style="color:black" href="https://www.strava.com/segments/8181413">https://www.strava.com/segments/8181413</a> </p>
 </div>
 <div style="justify-content:center">
 
   <h1>1000 ft. drag</h1>
 
-      <table style="max-width:80%" align=center class="table" id="table" data-toggle="table" data-sort-order="desc" data-sort-name="time">
+      <table style="max-width:70%" align=center class="table" id="table" data-toggle="table" data-sort-order="asc" data-sort-name="time">
 
   <thead>
     <tr>

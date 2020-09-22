@@ -4,17 +4,25 @@
       <%- include ('./partials/head.ejs') %>
     </head>
     <body>
-      <div class="container" style=" margin-top: 20px">
+      <div class="container" style="background-color:teal">
         <%- include ('./partials/nav.ejs') %>
         <h1>Add a new effort</h1>
           <form action="/rides" method="POST">
               <input style="display:none" name="username" value="<%=currentUser.username%>"><br>
-              <label for="img">Image to verify:</label>
-              <input type="text" name="imgVerify" required id="image" placeholder="link to ride"><br>
-              Time: <input type="mongoose.Types.Decimal128" name="time" placeholder="in seconds"/><br>
-              Top Speed: <input type="mongoose.Types.Decimal128" name="topSpeed" placeholder="mph"/><br>
+              <div class="form-group">
+                <label for="img">Link to verify:</label>
+                <input type="text" name="imgVerify" required id="image" placeholder="url">
+              </div>
+              <div class="form-group">
+                <label for="time">Time: </label>
+                <input type="mongoose.Types.Decimal128" name="time" placeholder="in seconds"/>
+              </div>
+              <div class="form-group">
+                <label for="topSpeed">Top Speed:</label>
+                <input type="mongoose.Types.Decimal128" name="topSpeed" placeholder="mph"/>
+              </div>
               <input style= "margin-top: 20px" type="submit" name="" value="Create Ride"/>
           </form>
-        </div>
+      </div>
     </body>
 </html>
