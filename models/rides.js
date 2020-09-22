@@ -1,8 +1,9 @@
 const mongoose = require('mongoose')
 
+
 const rideSchema = new mongoose.Schema({
-  letter: {type: String},
-  distance: { type: mongoose.Types.Decimal128, required: true },
+  username: {type: String},
+  time: {type: mongoose.Types.Decimal128, required: true },
   topSpeed: {type: mongoose.Types.Decimal128, required: true},
 })
 

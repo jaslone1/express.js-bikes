@@ -1,31 +1,36 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <%- include ('../partials/head.ejs') %>
+    <%- include ('./partials/head.ejs') %>
   </head>
   <body class="text-center">
 
     <div class=>
 
-      <h1>Rides Index Page</h1>
-      <button type="button" name="button">
-        <a href="/rides/new">Add New Ride</a>
-      </button>
-    <table class="table">
+      <h1>1000 ft. drag</h1>
+          <table class="table">
       <% for (let ride of rides) { %>
       <thead>
         <tr>
-          <th>Distance</th>
+          <th></th>
+          <th>Time</th>
           <th>Top Speed</th>
+          <th></th>
         </tr>
       </thead>
         <tr>
-          <td><%= ride.distance %></td>
+          <td><%= ride.username%> </td>
+          <td><%= ride.time %></td>
           <td><%= ride.topSpeed %></td>
+          <td><a href="/rides/<%=ride._id%>"><button type="button" name="Show">Ride Data</button></a></td>
         </tr>
       <%}%>
       </table>
-
+      <a href="/rides/new">
+      <button type="button" name="New Ride" >
+        Create New Ride
+      </button>
+      </a>
 
 
     </div>

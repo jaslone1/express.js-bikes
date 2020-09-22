@@ -1,25 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <%- include ('../partials/head.ejs') %>
+    <%- include ('./partials/head.ejs') %>
   </head>
   <body class="text-center">
     <h1>Rides Edits</h1>
     <form action="/rides/<%=ride.id%>?_method=PUT" method="POST">
 <br>
-      <label for="letter">letter:</label>
-      <input type="text" name="letter" value="<%=ride.letter%>">
-<br>
-      <label for="distance">Distance:</label>
-      <input type="mongoose.Types.Decimal128" name="distance" value="<%=ride.distance%>">
+      <label for="time">Time:</label>
+      <input type="mongoose.Types.Decimal128" name="time" value="<%=ride.time%>">
 <br>
       <label for="topSpeed">Top Speed:</label>
       <input type="mongoose.Types.Decimal128" name="topSpeed" value="<%=ride.topSpeed%>">
 <br>
     <input type="submit" value="Submit">
     </form>
+      <a href="/rides">
     <button type="button" name="button">
-      <a href="/rides">Back</a>
-    </button>
+    Back
+    </button></a>
   </body>
 </html>

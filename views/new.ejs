@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <%- include ('../partials/head.ejs') %>
+      <%- include ('./partials/head.ejs') %>
     </head>
     <body>
         <h1>New Rides page</h1>
         <form action="/rides" method="POST">
-            Letter: <input type="text" name="letter" /><br>
-            Distance: <input type="mongoose.Types.Decimal128" name="distance" /><br>
-            Top Speed: <input type="mongoose.Types.Decimal128" name="topSpeed" /><br>
+            <input style="display:none" name="username" value="<%=currentUser.username%>"><br>
+            Time: <input type="mongoose.Types.Decimal128" name="time" placeholder="in seconds"/><br>
+            Top Speed: <input type="mongoose.Types.Decimal128" name="topSpeed" placeholder="mph"/><br>
             <input type="submit" name="" value="Create Ride"/>
         </form>
     </body>

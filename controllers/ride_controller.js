@@ -2,38 +2,39 @@ const express = require('express')
 const rides = express.Router()
 const Ride = require('../models/rides.js')
 
+const isAuthenticated = (req, res, next) => {
+  if (req.session.currentUser) {
+    return next()
+  } else {
+    res.redirect('rides/home')
+  }
+}
+
 //home
 rides.get('/home', (req, res) => {
     res.render('home.ejs')
 })
 
-//Index
-rides.get('/', (req, res) => {
-  Ride.find({}, (error, allRides)=> {
-    res.render('index.ejs', {
-      rides: allRides
-    })
-  })
-})
-
-
 //new
-rides.get('/new', (req, res) =>{
-  console.log('heres new');
-  res.render('new.ejs')
+rides.get('/new', isAuthenticated, (req, res) =>{
+  res.render(
+    'new.ejs', {
+      currentUser: req.session.currentUser}
+    )
 })
 
 //edit
-rides.get('/:id/edit', (req,res) => {
+rides.get('/:id/edit', isAuthenticated, (req,res) => {
   Ride.findById(req.params.id, (error, foundRide) => {
     res.render('edit.ejs', {
-      ride: foundRide
+      ride: foundRide,
+      currentUser: req.session.currentUser
     })
   })
 })
 
 //delete
-rides.delete('/:id', (req, res) => {
+rides.delete('/:id', isAuthenticated, (req, res) => {
   Ride.findByIdAndRemove(req.params.id, (error, deletedRide) => {
     res.redirect('/rides')
   })
@@ -43,29 +44,44 @@ rides.delete('/:id', (req, res) => {
 
 //Show
 rides.get('/:id', (req, res) => {
-  Ride.findById(req.params.id, (error, foundRide) => {
-    res.render('show.ejs', {
-      ride: foundRide
+  if (req.session.currentUser) {
+    Ride.findById(req.params.id, (error, foundRide) => {
+      res.render('show.ejs', {
+        ride: foundRide,
+        currentUser: req.session.currentUser
+      })
     })
-  })
+  } else {
+    res.redirect('/sessions/new')
+  }
 })
 
 //update
-rides.put('/:id', (req, res) => {
+rides.put('/:id', isAuthenticated, (req, res) => {
   Ride.findByIdAndUpdate(
     req.params.id,
     req.body,
     { new: true },
     (error, updatesModel) => {
-      res.redirect('/rides')
+      res.redirect('/')
     }
   )
 })
 
 //create
-rides.post('/', (req, res) => {
+rides.post('/', isAuthenticated, (req, res) => {
   Ride.create(req.body, (error, createdRide) => {
     res.redirect('/')
+  })
+})
+
+//Index
+rides.get('/', (req, res) => {
+  Ride.find({}, (error, allRides)=> {
+    res.render('index.ejs', {
+      rides: allRides,
+      currentUser: req.session.currentUser
+    })
   })
 })
 
