@@ -6,13 +6,17 @@ const isAuthenticated = (req, res, next) => {
   if (req.session.currentUser) {
     return next()
   } else {
-    res.redirect('rides/home')
+    res.redirect('/rides/home')
   }
 }
 
 //home
 rides.get('/home', (req, res) => {
-    res.render('home.ejs')
+  Ride.find({}, (error, allRides)=>{
+    res.render('home.ejs', {
+    rides: allRides
+  })
+  })
 })
 
 //new
@@ -63,7 +67,7 @@ rides.put('/:id', isAuthenticated, (req, res) => {
     req.body,
     { new: true },
     (error, updatesModel) => {
-      res.redirect('/')
+      res.redirect('/rides')
     }
   )
 })
@@ -71,7 +75,7 @@ rides.put('/:id', isAuthenticated, (req, res) => {
 //create
 rides.post('/', isAuthenticated, (req, res) => {
   Ride.create(req.body, (error, createdRide) => {
-    res.redirect('/')
+    res.redirect('/rides')
   })
 })
 
