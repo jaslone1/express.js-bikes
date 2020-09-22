@@ -13,7 +13,7 @@ sessions.post('/', (req, res) => {
   User.findOne({ username: req.body.username }, (err, foundUser) => {
     if (err) {
       console.log(err)
-      res.send('oops the db had a pproblem')
+      res.send('oops the db had a problem')
     } else if (!foundUser) {
       res.send('<a href="/sessions/new">Sorry! Username doesn\'t match our records</a>')
     } else {
