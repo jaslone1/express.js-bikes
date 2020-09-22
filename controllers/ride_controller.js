@@ -14,7 +14,8 @@ const isAuthenticated = (req, res, next) => {
 rides.get('/home', (req, res) => {
   Ride.find({}, (error, allRides)=>{
     res.render('home.ejs', {
-    rides: allRides
+    rides: allRides,
+    currentUser: req.session.currentUser
   })
   })
 })
