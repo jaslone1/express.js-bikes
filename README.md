@@ -2,9 +2,9 @@
 
 Leaderboard of effort for certain Strava segments.
 
-Users input time and high speed for a segment in Austin,TX. 
+Users input time and high speed for a segment in Austin,TX.
 Link to the ride on Strava for verification.
-Makes it possible to easily track socially distanted challenges. 
+Makes it possible to easily track socially distanted challenges.
 
 Next steps:
 
@@ -15,3 +15,5 @@ Next steps:
 -styling
 -add content to home page (eg. sprinting or climbing videos)
 
+link to app
+https://lennyproject.herokuapp.com/
